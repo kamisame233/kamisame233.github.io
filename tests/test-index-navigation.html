@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page Navigation Links Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .navigation-links {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .status {
+            background: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #2d5a2d;
+        }
+        .debug-info {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #6c757d;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Index Page Navigation Links Test</h1>
+    
+    <div class="test-section">
+        <h2>Current Navigation Links (Exact Copy from index.html)</h2>
+        <div class="navigation-links">
+            <p style="text-align:center;white-space:pre-wrap;" class="">
+                <a href="about.html" target="_blank" data-translate="true" style="color: #007acc; text-decoration: underline; cursor: pointer; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">About</a>    
+                <a href="contact.html" target="_blank" data-translate="true" style="color: #007acc; text-decoration: underline; cursor: pointer; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">Contact</a>
+            </p>
+        </div>
+        
+        <div class="status">
+            <strong>Expected Behavior:</strong>
+            <ul>
+                <li>✅ Links should be blue (#007acc)</li>
+                <li>✅ Links should have underlines</li>
+                <li>✅ Links should change color on hover (#0056b3)</li>
+                <li>✅ Links should be clickable</li>
+                <li>✅ Links should open in new tabs</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Debug Information</h2>
+        <div class="debug-info" id="debug-info">
+            <div>About Link href: <span id="about-href">Loading...</span></div>
+            <div>Contact Link href: <span id="contact-href">Loading...</span></div>
+            <div>About Link text: <span id="about-text">Loading...</span></div>
+            <div>Contact Link text: <span id="contact-text">Loading...</span></div>
+            <div>About Link computed style: <span id="about-style">Loading...</span></div>
+            <div>Contact Link computed style: <span id="contact-style">Loading...</span></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutLink = document.querySelector('a[href="about.html"]');
+            const contactLink = document.querySelector('a[href="contact.html"]');
+            
+            function updateDebugInfo() {
+                if (aboutLink) {
+                    document.getElementById('about-href').textContent = aboutLink.getAttribute('href');
+                    document.getElementById('about-text').textContent = aboutLink.textContent.trim();
+                    const computedStyle = window.getComputedStyle(aboutLink);
+                    document.getElementById('about-style').textContent = 
+                        `color: ${computedStyle.color}, text-decoration: ${computedStyle.textDecoration}`;
+                }
+                
+                if (contactLink) {
+                    document.getElementById('contact-href').textContent = contactLink.getAttribute('href');
+                    document.getElementById('contact-text').textContent = contactLink.textContent.trim();
+                    const computedStyle = window.getComputedStyle(contactLink);
+                    document.getElementById('contact-style').textContent = 
+                        `color: ${computedStyle.color}, text-decoration: ${computedStyle.textDecoration}`;
+                }
+            }
+            
+            updateDebugInfo();
+            
+            // Add click event listeners
+            if (aboutLink) {
+                aboutLink.addEventListener('click', function(e) {
+                    console.log('About link clicked!');
+                    alert('About link clicked! This should open about.html in a new tab.');
+                });
+            }
+            
+            if (contactLink) {
+                contactLink.addEventListener('click', function(e) {
+                    console.log('Contact link clicked!');
+                    alert('Contact link clicked! This should open contact.html in a new tab.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

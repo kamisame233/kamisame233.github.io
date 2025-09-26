@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Links Debug Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .navigation-links {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .status {
+            background: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #2d5a2d;
+        }
+        .error {
+            background: #ffe6e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #cc0000;
+        }
+        .debug-info {
+            background: #f0f8ff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #007acc;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Navigation Links Debug Test</h1>
+    
+    <div class="test-section">
+        <h2>Current Link Configuration</h2>
+        <div class="navigation-links">
+            <p style="text-align:center;white-space:pre-wrap;" class="">
+                <a href="about.html" target="_blank" data-translate="true" style="color: #007acc !important; text-decoration: underline !important; cursor: pointer !important; transition: color 0.3s ease !important;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">About</a>    
+                <a href="contact.html" target="_blank" data-translate="true" style="color: #007acc !important; text-decoration: underline !important; cursor: pointer !important; transition: color 0.3s ease !important;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">Contact</a>
+            </p>
+        </div>
+        
+        <div class="status">
+            <strong>Link Attributes:</strong>
+            <ul>
+                <li>✅ href: about.html / contact.html</li>
+                <li>✅ target: _blank (opens in new tab)</li>
+                <li>✅ data-translate: true (for language switching)</li>
+                <li>✅ style: !important declarations for color, text-decoration, cursor</li>
+                <li>✅ hover effects: onmouseover/onmouseout</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Debug Information</h2>
+        <div class="debug-info" id="debugInfo">
+            Loading debug information...
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Click Test Results</h2>
+        <div id="clickResults">
+            <p>Click the links above to see test results...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutLink = document.querySelector('a[href="about.html"]');
+            const contactLink = document.querySelector('a[href="contact.html"]');
+            const debugInfo = document.getElementById('debugInfo');
+            const clickResults = document.getElementById('clickResults');
+            
+            // Debug information
+            let debugText = '';
+            
+            if (aboutLink) {
+                debugText += `About Link Found:\n`;
+                debugText += `  - href: ${aboutLink.href}\n`;
+                debugText += `  - target: ${aboutLink.target}\n`;
+                debugText += `  - data-translate: ${aboutLink.getAttribute('data-translate')}\n`;
+                debugText += `  - computed color: ${window.getComputedStyle(aboutLink).color}\n`;
+                debugText += `  - computed text-decoration: ${window.getComputedStyle(aboutLink).textDecoration}\n`;
+                debugText += `  - computed cursor: ${window.getComputedStyle(aboutLink).cursor}\n`;
+                debugText += `  - clickable: ${aboutLink.style.cursor === 'pointer' || window.getComputedStyle(aboutLink).cursor === 'pointer'}\n\n`;
+            } else {
+                debugText += '❌ About link NOT found\n\n';
+            }
+            
+            if (contactLink) {
+                debugText += `Contact Link Found:\n`;
+                debugText += `  - href: ${contactLink.href}\n`;
+                debugText += `  - target: ${contactLink.target}\n`;
+                debugText += `  - data-translate: ${contactLink.getAttribute('data-translate')}\n`;
+                debugText += `  - computed color: ${window.getComputedStyle(contactLink).color}\n`;
+                debugText += `  - computed text-decoration: ${window.getComputedStyle(contactLink).textDecoration}\n`;
+                debugText += `  - computed cursor: ${window.getComputedStyle(contactLink).cursor}\n`;
+                debugText += `  - clickable: ${contactLink.style.cursor === 'pointer' || window.getComputedStyle(contactLink).cursor === 'pointer'}\n\n`;
+            } else {
+                debugText += '❌ Contact link NOT found\n\n';
+            }
+            
+            debugInfo.textContent = debugText;
+            
+            // Click event listeners
+            if (aboutLink) {
+                aboutLink.addEventListener('click', function(e) {
+                    clickResults.innerHTML = `
+                        <div class="status">
+                            <strong>✅ About Link Clicked!</strong><br>
+                            Event: ${e.type}<br>
+                            Target: ${e.target.tagName}<br>
+                            Href: ${e.target.href}<br>
+                            Should open: about.html in new tab
+                        </div>
+                    `;
+                });
+            }
+            
+            if (contactLink) {
+                contactLink.addEventListener('click', function(e) {
+                    clickResults.innerHTML = `
+                        <div class="status">
+                            <strong>✅ Contact Link Clicked!</strong><br>
+                            Event: ${e.type}<br>
+                            Target: ${e.target.tagName}<br>
+                            Href: ${e.target.href}<br>
+                            Should open: contact.html in new tab
+                        </div>
+                    `;
+                });
+            }
+            
+            // Test if links are actually clickable
+            setTimeout(() => {
+                if (aboutLink && contactLink) {
+                    const aboutClickable = aboutLink.style.cursor === 'pointer' || 
+                                         window.getComputedStyle(aboutLink).cursor === 'pointer';
+                    const contactClickable = contactLink.style.cursor === 'pointer' || 
+                                          window.getComputedStyle(contactLink).cursor === 'pointer';
+                    
+                    if (aboutClickable && contactClickable) {
+                        clickResults.innerHTML += `
+                            <div class="status">
+                                <strong>✅ Links are properly styled and clickable!</strong>
+                            </div>
+                        `;
+                    } else {
+                        clickResults.innerHTML += `
+                            <div class="error">
+                                <strong>❌ Links may not be properly clickable</strong><br>
+                                About clickable: ${aboutClickable}<br>
+                                Contact clickable: ${contactClickable}
+                            </div>
+                        `;
+                    }
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

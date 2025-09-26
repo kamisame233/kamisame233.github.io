@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Links Test - Top vs Bottom</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .navigation-links {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .status {
+            background: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #2d5a2d;
+        }
+        .error {
+            background: #ffe6e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #cc0000;
+        }
+        .success {
+            background: #e8f5e8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #2d5a2d;
+            border-left: 4px solid #28a745;
+        }
+        .instructions {
+            background: #fff3cd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        .header-nav {
+            background: #333;
+            color: white;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .header-nav a:hover {
+            color: #ccc;
+        }
+    </style>
+    
+    <!-- Include the same CSS from index.html -->
+    <style>
+        /* Force BOTTOM navigation links to be styled and clickable (only in sqs-html-content) */
+        .sqs-html-content a[href="about.html"],
+        .sqs-html-content a[href="contact.html"] {
+          color: #007acc !important;
+          text-decoration: underline !important;
+          cursor: pointer !important;
+          transition: color 0.3s ease !important;
+        }
+
+        .sqs-html-content a[href="about.html"]:hover,
+        .sqs-html-content a[href="contact.html"]:hover {
+          color: #0056b3 !important;
+        }
+
+        /* Ensure all BOTTOM navigation links with data-translate are styled */
+        .sqs-html-content p a[data-translate="true"] {
+          color: #007acc !important;
+          text-decoration: underline !important;
+          cursor: pointer !important;
+          transition: color 0.3s ease !important;
+        }
+
+        .sqs-html-content p a[data-translate="true"]:hover {
+          color: #0056b3 !important;
+        }
+
+        /* Reset TOP header navigation links to default styling */
+        .header-nav a[href="about.html"],
+        .header-nav a[href="contact.html"],
+        .header-menu-nav-item a[href="about.html"],
+        .header-menu-nav-item a[href="contact.html"] {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+
+        .header-nav a[href="about.html"]:hover,
+        .header-nav a[href="contact.html"]:hover,
+        .header-menu-nav-item a[href="about.html"]:hover,
+        .header-menu-nav-item a[href="contact.html"]:hover {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+    </style>
+    
+    <!-- Include translations.js -->
+    <script src="translations.js"></script>
+</head>
+<body>
+    <h1>Navigation Links Test - Top vs Bottom</h1>
+    
+    <div class="instructions">
+        <h3>🎯 Test Instructions:</h3>
+        <p>This test verifies that:</p>
+        <ul>
+            <li><strong>TOP navigation links</strong> (in header) should have default styling (white text, no underline)</li>
+            <li><strong>BOTTOM navigation links</strong> (at page bottom) should have blue styling with underlines</li>
+            <li>Both should be clickable and functional</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>TOP Navigation Links (Header Style)</h2>
+        <div class="header-nav">
+            <a href="services-content.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        
+        <div class="status">
+            <strong>Expected:</strong> White text, no underlines, default hover effects
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>BOTTOM Navigation Links (Page Bottom Style)</h2>
+        <div class="sqs-html-content" data-sqsp-text-block-content>
+            <div class="navigation-links">
+                <p style="text-align:center;white-space:pre-wrap;" class="">
+                    <a href="about.html" target="_blank" data-translate="true" style="color: #007acc !important; text-decoration: underline !important; cursor: pointer !important; transition: color 0.3s ease !important;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">About</a>    
+                    <a href="contact.html" target="_blank" data-translate="true" style="color: #007acc !important; text-decoration: underline !important; cursor: pointer !important; transition: color 0.3s ease !important;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">Contact</a>
+                </p>
+            </div>
+        </div>
+        
+        <div class="status">
+            <strong>Expected:</strong> Blue text (#007acc), underlines, hover effects
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="testResults">
+            <p>Click the links above to see test results...</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Visual Verification</h2>
+        <div id="visualResults">
+            <p>Loading visual verification...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const topAboutLink = document.querySelector('.header-nav a[href="about.html"]');
+            const topContactLink = document.querySelector('.header-nav a[href="contact.html"]');
+            const bottomAboutLink = document.querySelector('.sqs-html-content a[href="about.html"]');
+            const bottomContactLink = document.querySelector('.sqs-html-content a[href="contact.html"]');
+            const testResults = document.getElementById('testResults');
+            const visualResults = document.getElementById('visualResults');
+            
+            let clickCount = 0;
+            
+            // Click event listeners for all links
+            [topAboutLink, topContactLink, bottomAboutLink, bottomContactLink].forEach(link => {
+                if (link) {
+                    link.addEventListener('click', function(e) {
+                        clickCount++;
+                        const linkType = this.closest('.header-nav') ? 'TOP' : 'BOTTOM';
+                        testResults.innerHTML = `
+                            <div class="success">
+                                <strong>✅ ${linkType} Link Clicked Successfully!</strong><br>
+                                Click #${clickCount}<br>
+                                Link: ${this.textContent}<br>
+                                Href: ${this.href}<br>
+                                Target: ${this.target || 'same tab'}<br>
+                                <strong>Result:</strong> Should navigate to ${this.href}
+                            </div>
+                        `;
+                    });
+                }
+            });
+            
+            // Visual verification
+            setTimeout(() => {
+                let visualText = '';
+                
+                // Check top navigation styling
+                if (topAboutLink && topContactLink) {
+                    const topAboutStyle = window.getComputedStyle(topAboutLink);
+                    const topContactStyle = window.getComputedStyle(topContactLink);
+                    
+                    visualText += `
+                        <div class="status">
+                            <strong>TOP Navigation Links:</strong><br>
+                            • About color: ${topAboutStyle.color}<br>
+                            • About text-decoration: ${topAboutStyle.textDecoration}<br>
+                            • Contact color: ${topContactStyle.color}<br>
+                            • Contact text-decoration: ${topContactStyle.textDecoration}<br>
+                            • Expected: White text, no underlines ✅<br><br>
+                        </div>
+                    `;
+                }
+                
+                // Check bottom navigation styling
+                if (bottomAboutLink && bottomContactLink) {
+                    const bottomAboutStyle = window.getComputedStyle(bottomAboutLink);
+                    const bottomContactStyle = window.getComputedStyle(bottomContactLink);
+                    
+                    visualText += `
+                        <div class="status">
+                            <strong>BOTTOM Navigation Links:</strong><br>
+                            • About color: ${bottomAboutStyle.color}<br>
+                            • About text-decoration: ${bottomAboutStyle.textDecoration}<br>
+                            • Contact color: ${bottomContactStyle.color}<br>
+                            • Contact text-decoration: ${bottomContactStyle.textDecoration}<br>
+                            • Expected: Blue text (#007acc), underlines ✅<br><br>
+                        </div>
+                    `;
+                }
+                
+                visualText += `
+                    <div class="success">
+                        <strong>✅ Both navigation types should be properly styled and functional!</strong>
+                    </div>
+                `;
+                
+                visualResults.innerHTML = visualText;
+            }, 100);
+        });
+    </script>
+</body>
+</html>

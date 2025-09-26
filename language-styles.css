@@ -1,0 +1,369 @@
+/* ===== CSS VARIABLES ===== */
+:root {
+  --primary-white: white;
+  --primary-black: black;
+  --hover-gray: #ccc;
+  --hover-dark-gray: #333;
+  --transition-fast: 0.3s ease;
+  --border-radius: 4px;
+  --box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ===== LANGUAGE PICKER STYLES ===== */
+.language-picker {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Default styling for pages with white backgrounds (Services, About, Contact) */
+#multilingual-language-picker-desktop,
+#multilingual-language-picker-mobile {
+  color: black !important;
+}
+
+#multilingual-language-picker-desktop a,
+#multilingual-language-picker-mobile a {
+  color: black !important;
+  text-decoration: none;
+}
+
+#multilingual-language-picker-desktop a:hover,
+#multilingual-language-picker-mobile a:hover {
+  color: black !important;
+  opacity: 0.7;
+}
+
+/* Special styling for index page (dark background) */
+body.index-page #multilingual-language-picker-desktop,
+body.index-page #multilingual-language-picker-mobile {
+  color: white !important;
+}
+
+body.index-page #multilingual-language-picker-desktop a,
+body.index-page #multilingual-language-picker-mobile a {
+  color: white !important;
+}
+
+body.index-page #multilingual-language-picker-desktop a:hover,
+body.index-page #multilingual-language-picker-mobile a:hover {
+  color: white !important;
+  opacity: 0.8;
+}
+
+.language-picker-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  min-width: 150px;
+  display: none;
+}
+
+.language-picker-content.show {
+  display: block;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.language-option:hover {
+  background-color: #f5f5f5;
+}
+
+.language-option .flag {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.language-option .name {
+  font-size: 14px;
+  color: #333;
+}
+
+.current-language {
+  display: flex;
+  align-items: center;
+  color: black;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.current-language:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.current-language-name {
+  margin-left: 8px;
+  font-size: 14px;
+  color: black;
+  font-weight: 500;
+}
+
+/* White styling for index page */
+body.index-page .current-language {
+  color: white;
+}
+
+body.index-page .current-language:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.index-page .current-language-name {
+  color: white;
+}
+
+/* Mobile language picker styles */
+.header-menu-nav-folder .language-picker-content {
+  position: static;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.header-menu-nav-folder .language-option {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.header-menu-nav-folder .language-option:last-child {
+  border-bottom: none;
+}
+
+/* Chinese language specific styles */
+body[lang="zh-CN"] {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+body[lang="zh-CN"] .header-title-text a {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+body[lang="zh-CN"] h1,
+body[lang="zh-CN"] h2,
+body[lang="zh-CN"] h3,
+body[lang="zh-CN"] h4,
+body[lang="zh-CN"] h5,
+body[lang="zh-CN"] h6 {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+body[lang="zh-CN"] .header-nav a {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+/* Language picker animations */
+.language-picker-content {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .language-picker-content {
+    right: -10px;
+    min-width: 120px;
+  }
+  
+  .language-option {
+    padding: 6px 10px;
+  }
+  
+  .language-option .flag {
+    font-size: 14px;
+  }
+  
+  .language-option .name {
+    font-size: 13px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .language-picker-content {
+    background: #2d2d2d;
+    border-color: #444;
+  }
+  
+  .language-option:hover {
+    background-color: #3d3d3d;
+  }
+  
+  .language-option .name {
+    color: #fff;
+  }
+  
+  .current-language-name {
+    color: #fff;
+  }
+}
+
+/* Accessibility improvements */
+.language-picker:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.language-option:focus {
+  outline: 2px solid #007bff;
+  outline-offset: -2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .language-picker-content {
+    border-width: 2px;
+  }
+  
+  .language-option {
+    border-bottom: 1px solid #000;
+  }
+}
+
+/* ===== NAVIGATION LINKS STYLING ===== */
+/* Bottom navigation links - always clickable and styled */
+.sqs-html-content a[href="about.html"],
+.sqs-html-content a[href="contact.html"],
+.sqs-html-content p a[data-translate="true"] {
+  color: var(--primary-white) !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  transition: color var(--transition-fast) !important;
+}
+
+.sqs-html-content a[href="about.html"]:hover,
+.sqs-html-content a[href="contact.html"]:hover,
+.sqs-html-content p a[data-translate="true"]:hover {
+  color: var(--hover-gray) !important;
+}
+
+/* Top navigation links styling - ensure proper colors for different page backgrounds */
+/* Default styling for all pages */
+.header-nav a[href="about.html"],
+.header-nav a[href="contact.html"],
+.header-menu-nav-item a[href="about.html"],
+.header-menu-nav-item a[href="contact.html"] {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.header-nav a[href="about.html"]:hover,
+.header-nav a[href="contact.html"]:hover,
+.header-menu-nav-item a[href="about.html"]:hover,
+.header-menu-nav-item a[href="contact.html"]:hover {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* INDEX PAGE SPECIFIC: Make top navigation links white on dark background */
+.index-page .header-nav a[href="about.html"],
+.index-page .header-nav a[href="contact.html"],
+.index-page .header-menu-nav-item a[href="about.html"],
+.index-page .header-menu-nav-item a[href="contact.html"] {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.index-page .header-nav a[href="about.html"]:hover,
+.index-page .header-nav a[href="contact.html"]:hover,
+.index-page .header-menu-nav-item a[href="about.html"]:hover,
+.index-page .header-menu-nav-item a[href="contact.html"]:hover {
+  color: #ccc !important;
+  text-decoration: none !important;
+}
+
+/* OTHER PAGES: Ensure top navigation links remain black on white background */
+body:not(.index-page) .header-nav a[href="about.html"],
+body:not(.index-page) .header-nav a[href="contact.html"],
+body:not(.index-page) .header-menu-nav-item a[href="about.html"],
+body:not(.index-page) .header-menu-nav-item a[href="contact.html"] {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+body:not(.index-page) .header-nav a[href="about.html"]:hover,
+body:not(.index-page) .header-nav a[href="contact.html"]:hover,
+body:not(.index-page) .header-menu-nav-item a[href="about.html"]:hover,
+body:not(.index-page) .header-menu-nav-item a[href="contact.html"]:hover {
+  color: #333 !important;
+  text-decoration: none !important;
+}
+
+/* ===== SHARED UTILITY CLASSES ===== */
+.nav-link-bottom {
+  color: var(--primary-white) !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  transition: color var(--transition-fast) !important;
+}
+
+.nav-link-bottom:hover {
+  color: var(--hover-gray) !important;
+}
+
+/* ===== BUTTON STYLING ===== */
+/* Common button properties */
+.sqs-block-button-element--primary,
+.sqs-block-button-element--primary:visited,
+.sqs-block-button-element--primary:link,
+.sqs-block-button-element--primary:active {
+  background-color: transparent !important;
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-style: none !important;
+  text-decoration-color: transparent !important;
+}
+
+/* English "Learn more" buttons - white styling */
+.sqs-block-button-element--primary,
+.sqs-block-button-element--primary:visited,
+.sqs-block-button-element--primary:link,
+.sqs-block-button-element--primary:active {
+  color: var(--primary-white) !important;
+  border: 1px solid var(--primary-white) !important;
+}
+
+.sqs-block-button-element--primary:hover {
+  color: var(--hover-gray) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--hover-gray) !important;
+}
+
+/* Chinese "了解更多" buttons - black styling */
+body[lang="zh-CN"] .sqs-block-button-element--primary,
+body[lang="zh-CN"] .sqs-block-button-element--primary:visited,
+body[lang="zh-CN"] .sqs-block-button-element--primary:link,
+body[lang="zh-CN"] .sqs-block-button-element--primary:active,
+body[lang="zh-CN"] a[data-translate="true"].sqs-block-button-element--primary,
+body[lang="zh-CN"] a[data-translate="true"].sqs-block-button-element--primary:visited,
+body[lang="zh-CN"] a[data-translate="true"].sqs-block-button-element--primary:link,
+body[lang="zh-CN"] a[data-translate="true"].sqs-block-button-element--primary:active {
+  color: var(--primary-black) !important;
+  border: 1px solid var(--primary-black) !important;
+}
+
+body[lang="zh-CN"] .sqs-block-button-element--primary:hover,
+body[lang="zh-CN"] a[data-translate="true"].sqs-block-button-element--primary:hover {
+  color: var(--hover-dark-gray) !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  border-color: var(--hover-dark-gray) !important;
+}

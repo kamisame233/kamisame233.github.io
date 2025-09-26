@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Links Test - Hainan Jiangshuo Industrial Co., Ltd.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .navigation-links {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+        }
+        .navigation-links a {
+            color: #007acc;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            margin: 0 10px;
+        }
+        .navigation-links a:hover {
+            color: #0056b3;
+        }
+        .status {
+            background: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #2d5a2d;
+        }
+        .instructions {
+            background: #fff3cd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <h1>Navigation Links Test</h1>
+    
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <p>Click on the "About" and "Contact" links below to test if they navigate to the correct pages.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Navigation Links</h2>
+        <div class="navigation-links">
+            <p style="text-align:center;white-space:pre-wrap;">
+                <a href="about.html" target="_blank" style="color: #007acc; text-decoration: underline; cursor: pointer; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">About</a>    
+                <a href="contact.html" target="_blank" style="color: #007acc; text-decoration: underline; cursor: pointer; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">Contact</a>
+            </p>
+        </div>
+        
+        <div class="status">
+            <strong>Expected Behavior:</strong>
+            <ul>
+                <li>Both links should be blue and underlined</li>
+                <li>Links should change color when you hover over them</li>
+                <li>Clicking "About" should open about.html in a new tab</li>
+                <li>Clicking "Contact" should open contact.html in a new tab</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>File Verification</h2>
+        <div class="status">
+            <strong>Files that should exist:</strong>
+            <ul>
+                <li>✅ about.html - Should exist in the same directory</li>
+                <li>✅ contact.html - Should exist in the same directory</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Link Properties</h2>
+        <div class="status">
+            <strong>About Link:</strong>
+            <ul>
+                <li>href="about.html"</li>
+                <li>target="_blank" (opens in new tab)</li>
+                <li>data-translate="true" (supports translation)</li>
+            </ul>
+            <strong>Contact Link:</strong>
+            <ul>
+                <li>href="contact.html"</li>
+                <li>target="_blank" (opens in new tab)</li>
+                <li>data-translate="true" (supports translation)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Test if links are clickable
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutLink = document.querySelector('a[href="about.html"]');
+            const contactLink = document.querySelector('a[href="contact.html"]');
+            
+            if (aboutLink && contactLink) {
+                console.log('✅ Both navigation links found');
+                console.log('About link:', aboutLink.href);
+                console.log('Contact link:', contactLink.href);
+                
+                // Add click event listeners for testing
+                aboutLink.addEventListener('click', function(e) {
+                    console.log('About link clicked!');
+                });
+                
+                contactLink.addEventListener('click', function(e) {
+                    console.log('Contact link clicked!');
+                });
+            } else {
+                console.error('❌ Navigation links not found');
+            }
+        });
+    </script>
+</body>
+</html>

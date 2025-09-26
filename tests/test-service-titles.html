@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Titles Translation Test - Hainan Jiangshuo Industrial Co., Ltd.</title>
+    <link rel="stylesheet" type="text/css" href="language-styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .service-list {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .service-item {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .service-title {
+            background: #f5f5f5;
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .service-title:hover {
+            background: #e9e9e9;
+        }
+        .service-content {
+            padding: 15px;
+            display: none;
+            background: white;
+        }
+        .service-content.active {
+            display: block;
+        }
+        .toggle-icon {
+            font-size: 18px;
+            color: #666;
+        }
+        .language-picker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .current-language {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: black;
+        }
+        .current-language-name {
+            margin-left: 8px;
+        }
+        .language-picker-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 150px;
+            display: none;
+        }
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .language-option:hover {
+            background-color: #f5f5f5;
+        }
+        .language-option .flag {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        .language-option .name {
+            font-size: 14px;
+            color: #333;
+        }
+        .expected-translation {
+            background: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-style: italic;
+            color: #2d5a2d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Picker -->
+    <div class="language-picker">
+        <div class="current-language" id="language-picker-trigger">
+            <span class="icon">🌐</span>
+            <span class="current-language-name">English</span>
+            <span style="margin-left: 8px;">▼</span>
+        </div>
+        <div class="language-picker-content" id="language-picker-menu">
+            <div class="language-option" data-lang="en">
+                <span class="flag">🇬🇧</span>
+                <span class="name">English</span>
+            </div>
+            <div class="language-option" data-lang="zh">
+                <span class="flag">🇨🇳</span>
+                <span class="name">中文</span>
+            </div>
+        </div>
+    </div>
+
+    <h1>Service Titles Translation Test</h1>
+    <p>This page tests the service titles that were missing translations in the accordion section.</p>
+
+    <div class="test-section">
+        <h2>Services Accordion</h2>
+        <div class="service-list">
+            <div class="service-item">
+                <div class="service-title" onclick="toggleService(this)">
+                    <span data-translate="true">Direct Import & Customs Clearance</span>
+                    <span class="toggle-icon">−</span>
+                </div>
+                <div class="service-content active">
+                    <p>We assist with smooth and compliant import procedures, including bonded warehouse options and zero-tariff entry under Hainan Free Trade Port policies.</p>
+                    <div class="expected-translation">Expected: 直接进口与清关</div>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-title" onclick="toggleService(this)">
+                    <span data-translate="true">Retail Distribution & Merchandising</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="service-content">
+                    <p>Complete retail management services from product placement to customer service and sales optimization.</p>
+                    <div class="expected-translation">Expected: 零售分销与商品销售</div>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-title" onclick="toggleService(this)">
+                    <span data-translate="true">Logistics Coordination</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="service-content">
+                    <p>Expert handling of logistics and supply chain management for efficient operations.</p>
+                    <div class="expected-translation">Expected: 物流协调</div>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-title" onclick="toggleService(this)">
+                    <span data-translate="true">Localized Sales Strategy</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="service-content">
+                    <p>Tailored sales strategies adapted to local market conditions and consumer preferences.</p>
+                    <div class="expected-translation">Expected: 本地化销售策略</div>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-title" onclick="toggleService(this)">
+                    <span data-translate="true">Brand Representation</span>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="service-content">
+                    <p>Professional brand representation and marketing services in the Chinese market.</p>
+                    <div class="expected-translation">Expected: 品牌代理</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script>
+        // Toggle service content
+        function toggleService(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.toggle-icon');
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                content.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+
+        // Language picker functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('language-picker-trigger');
+            const menu = document.getElementById('language-picker-menu');
+            const options = document.querySelectorAll('.language-option');
+            
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            options.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const lang = this.dataset.lang;
+                    
+                    if (window.languageManager) {
+                        console.log('Switching to language:', lang);
+                        window.languageManager.switchLanguage(lang);
+                    } else {
+                        console.error('Language manager not initialized');
+                    }
+                    
+                    menu.style.display = 'none';
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

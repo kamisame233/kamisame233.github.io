@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Links Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .navigation-links {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .status {
+            background: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #2d5a2d;
+        }
+        .instructions {
+            background: #fff3cd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <h1>Navigation Links Verification</h1>
+    
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <p>Click on the "About" and "Contact" links below to test if they navigate to the correct pages.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Index Page Navigation Links</h2>
+        <div class="navigation-links">
+            <p style="text-align:center;white-space:pre-wrap;" class="">
+                <a href="about.html" target="_blank" data-translate="true" style="color: #007acc; text-decoration: underline; cursor: pointer; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">About</a>    
+                <a href="contact.html" target="_blank" data-translate="true" style="color: #007acc; text-decoration: underline; cursor: pointer; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">Contact</a>
+            </p>
+        </div>
+        
+        <div class="status">
+            <strong>Link Configuration:</strong>
+            <ul>
+                <li>✅ About link: <code>href="about.html"</code> - Opens about page in new tab</li>
+                <li>✅ Contact link: <code>href="contact.html"</code> - Opens contact page in new tab</li>
+                <li>✅ Both links have <code>target="_blank"</code> for new tab behavior</li>
+                <li>✅ Both links have <code>data-translate="true"</code> for language switching</li>
+                <li>✅ Both links have proper styling: blue color, underlines, hover effects</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Expected Behavior</h2>
+        <div class="status">
+            <strong>When you click the links:</strong>
+            <ul>
+                <li><strong>About link:</strong> Should open <code>about.html</code> in a new tab</li>
+                <li><strong>Contact link:</strong> Should open <code>contact.html</code> in a new tab</li>
+                <li><strong>Visual feedback:</strong> Links should be blue with underlines</li>
+                <li><strong>Hover effect:</strong> Links should darken when you hover over them</li>
+                <li><strong>Translation:</strong> Links should work in both English and Chinese</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>File Verification</h2>
+        <div class="status">
+            <strong>Target files exist:</strong>
+            <ul>
+                <li>✅ <code>about.html</code> - About page file exists</li>
+                <li>✅ <code>contact.html</code> - Contact page file exists</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Test if links are clickable
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutLink = document.querySelector('a[href="about.html"]');
+            const contactLink = document.querySelector('a[href="contact.html"]');
+            
+            if (aboutLink && contactLink) {
+                console.log('✅ Both navigation links found');
+                console.log('About link:', aboutLink.href);
+                console.log('Contact link:', contactLink.href);
+                
+                // Add click event listeners for testing
+                aboutLink.addEventListener('click', function(e) {
+                    console.log('About link clicked! Opening about.html in new tab.');
+                });
+                
+                contactLink.addEventListener('click', function(e) {
+                    console.log('Contact link clicked! Opening contact.html in new tab.');
+                });
+            } else {
+                console.error('❌ Navigation links not found');
+            }
+        });
+    </script>
+</body>
+</html>

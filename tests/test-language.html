@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Test - Hainan Jiangshuo Industrial Co., Ltd.</title>
+    <link rel="stylesheet" type="text/css" href="language-styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .language-picker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .current-language {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .current-language-name {
+            margin-left: 8px;
+        }
+        .language-picker-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 150px;
+            display: none;
+        }
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .language-option:hover {
+            background-color: #f5f5f5;
+        }
+        .language-option .flag {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        .language-option .name {
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Picker -->
+    <div class="language-picker">
+        <div class="current-language" id="language-picker-trigger">
+            <span class="icon">🌐</span>
+            <span class="current-language-name">English</span>
+            <span style="margin-left: 8px;">▼</span>
+        </div>
+        <div class="language-picker-content" id="language-picker-menu">
+            <div class="language-option" data-lang="en">
+                <span class="flag">🇬🇧</span>
+                <span class="name">English</span>
+            </div>
+            <div class="language-option" data-lang="zh">
+                <span class="flag">🇨🇳</span>
+                <span class="name">中文</span>
+            </div>
+        </div>
+    </div>
+
+    <h1>Hainan Jiangshuo Industrial Co., Ltd.</h1>
+    
+    <div class="test-section">
+        <h2>Navigation</h2>
+        <nav>
+            <a href="#">Services</a> |
+            <a href="#">About</a> |
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+
+    <div class="test-section">
+        <h2>Company Description</h2>
+        <p>Hainan Jiangshuo Industrial Co., Ltd. is a trade and distribution company based in the Hainan Free Trade Port, China. We help international brands enter the Chinese market by managing import logistics, customs clearance, and in-store retail operations.</p>
+        
+        <p>With direct access to China's most open policy zone, we specialize in making global products locally available—efficiently, compliantly, and with care. From premium consumer goods to niche outdoor brands, we work closely with partners to deliver long-term value through tailored go-to-market strategies.</p>
+        
+        <p>Whether you're exploring market entry or looking for a reliable local distributor, our team is here to bridge the gap between global quality and Chinese opportunity.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Services</h2>
+        <h3>Services we offer</h3>
+        <ul>
+            <li>Import Logistics Management</li>
+            <li>Customs Clearance Services</li>
+            <li>In-Store Retail Operations</li>
+            <li>Market Entry Strategy</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Contact Form</h2>
+        <form>
+            <div>
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name">
+            </div>
+            <div>
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+            </div>
+            <div>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Email Address">
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Message"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="test-section">
+        <h2>Newsletter Signup</h2>
+        <p>Sign up with your email address to receive news and updates.</p>
+        <form>
+            <input type="email" placeholder="Email Address">
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script src="translations.js"></script>
+    <script>
+        // Simple test implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('language-picker-trigger');
+            const menu = document.getElementById('language-picker-menu');
+            const options = document.querySelectorAll('.language-option');
+            
+            trigger.addEventListener('click', function() {
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    if (window.languageManager) {
+                        window.languageManager.switchLanguage(lang);
+                    }
+                    menu.style.display = 'none';
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

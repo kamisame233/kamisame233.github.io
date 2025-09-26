@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Button Fix Test - 了解更多</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #333;
+            color: white;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            background: #444;
+        }
+        .test-section h2 {
+            color: white;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .status {
+            background: #2d5a2d;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #e8f5e8;
+        }
+        .error {
+            background: #cc0000;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #ffe6e6;
+        }
+        .success {
+            background: #2d5a2d;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #e8f5e8;
+            border-left: 4px solid #28a745;
+        }
+        .instructions {
+            background: #664d00;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            color: #fff3cd;
+        }
+        .button-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #555;
+            border-radius: 5px;
+        }
+        .language-switcher {
+            background: #007acc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .language-switcher:hover {
+            background: #0056b3;
+        }
+    </style>
+    
+    <!-- Include the same CSS from language-styles.css -->
+    <style>
+        /* ALL "Learn more" buttons styling - make them white (both English and Chinese) */
+        .sqs-block-button-element--primary,
+        .sqs-block-button-element--primary:visited,
+        .sqs-block-button-element--primary:link,
+        .sqs-block-button-element--primary:active {
+          color: white !important;
+          background-color: transparent !important;
+          border: 1px solid white !important;
+          text-decoration: none !important;
+          text-decoration-line: none !important;
+          text-decoration-style: none !important;
+          text-decoration-color: transparent !important;
+        }
+
+        .sqs-block-button-element--primary:hover {
+          color: #ccc !important;
+          background-color: rgba(255, 255, 255, 0.1) !important;
+          border-color: #ccc !important;
+          text-decoration: none !important;
+          text-decoration-line: none !important;
+          text-decoration-style: none !important;
+          text-decoration-color: transparent !important;
+        }
+
+        /* Additional specificity for buttons with data-translate */
+        a[data-translate="true"].sqs-block-button-element--primary,
+        a[data-translate="true"].sqs-block-button-element--primary:visited,
+        a[data-translate="true"].sqs-block-button-element--primary:link,
+        a[data-translate="true"].sqs-block-button-element--primary:active {
+          color: white !important;
+          background-color: transparent !important;
+          border: 1px solid white !important;
+          text-decoration: none !important;
+          text-decoration-line: none !important;
+          text-decoration-style: none !important;
+          text-decoration-color: transparent !important;
+        }
+
+        a[data-translate="true"].sqs-block-button-element--primary:hover {
+          color: #ccc !important;
+          background-color: rgba(255, 255, 255, 0.1) !important;
+          border-color: #ccc !important;
+          text-decoration: none !important;
+          text-decoration-line: none !important;
+          text-decoration-style: none !important;
+          text-decoration-color: transparent !important;
+        }
+    </style>
+</head>
+<body lang="zh-CN">
+    <h1>Chinese Button Fix Test - 了解更多</h1>
+    
+    <div class="instructions">
+        <h3>🎯 Test Instructions:</h3>
+        <p>This test verifies that ALL "Learn more" buttons (both English and Chinese) are white with no underlines.</p>
+        <button class="language-switcher" onclick="switchLanguage()">Switch to English</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Chinese "了解更多" Buttons (Should be WHITE)</h2>
+        <div class="button-container">
+            <a href="about.html" class="sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element" data-sqsp-button data-translate="true">
+                了解更多
+            </a>
+        </div>
+        
+        <div class="button-container">
+            <a href="services-content.html" class="sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element" data-sqsp-button data-translate="true">
+                了解更多
+            </a>
+        </div>
+        
+        <div class="status">
+            <strong>Expected:</strong> WHITE text, WHITE border, transparent background, NO underline
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>English "Learn more" Buttons (Should be WHITE)</h2>
+        <div class="button-container">
+            <a href="about.html" class="sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element" data-sqsp-button>
+                Learn more
+            </a>
+        </div>
+        
+        <div class="button-container">
+            <a href="services-content.html" class="sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element" data-sqsp-button>
+                Learn more
+            </a>
+        </div>
+        
+        <div class="status">
+            <strong>Expected:</strong> WHITE text, WHITE border, transparent background, NO underline
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Visual Verification</h2>
+        <div id="visualResults">
+            <p>Loading visual verification...</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="testResults">
+            <p>Click the buttons above to see test results...</p>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'zh-CN';
+        
+        function switchLanguage() {
+            if (currentLang === 'zh-CN') {
+                currentLang = 'en';
+                document.body.setAttribute('lang', 'en');
+                document.querySelector('h1').textContent = 'Chinese Button Fix Test - Learn more';
+                document.querySelector('.instructions h3').textContent = '🎯 Test Instructions:';
+                document.querySelector('.instructions p').textContent = 'This test verifies that the Chinese "了解更多" (Learn more) buttons are white with no underlines, not blue.';
+                document.querySelector('.language-switcher').textContent = 'Switch to Chinese';
+                document.querySelector('.test-section h2').textContent = 'English "Learn more" Buttons (Should be BLUE)';
+                document.querySelectorAll('.test-section h2')[1].textContent = 'Chinese "了解更多" Buttons (Should be WHITE)';
+            } else {
+                currentLang = 'zh-CN';
+                document.body.setAttribute('lang', 'zh-CN');
+                document.querySelector('h1').textContent = 'Chinese Button Fix Test - 了解更多';
+                document.querySelector('.instructions h3').textContent = '🎯 Test Instructions:';
+                document.querySelector('.instructions p').textContent = 'This test verifies that the Chinese "了解更多" (Learn more) buttons are white with no underlines, not blue.';
+                document.querySelector('.language-switcher').textContent = 'Switch to English';
+                document.querySelector('.test-section h2').textContent = 'Chinese "了解更多" Buttons (Should be WHITE)';
+                document.querySelectorAll('.test-section h2')[1].textContent = 'English "Learn more" Buttons (Should be BLUE)';
+            }
+            
+            // Re-run visual verification
+            setTimeout(visualVerification, 100);
+        }
+        
+        function visualVerification() {
+            const chineseButtons = document.querySelectorAll('a[data-translate="true"].sqs-block-button-element--primary');
+            const englishButtons = document.querySelectorAll('a:not([data-translate="true"]).sqs-block-button-element--primary');
+            const visualResults = document.getElementById('visualResults');
+            
+            let visualText = '';
+            
+            // Check Chinese buttons styling
+            chineseButtons.forEach((button, index) => {
+                const buttonStyle = window.getComputedStyle(button);
+                const isWhite = buttonStyle.color.includes('255, 255, 255') || buttonStyle.color === 'white';
+                const hasNoUnderline = buttonStyle.textDecoration === 'none' || buttonStyle.textDecorationLine === 'none';
+                
+                visualText += `
+                    <div class="${isWhite && hasNoUnderline ? 'success' : 'error'}">
+                        <strong>Chinese Button ${index + 1} (了解更多):</strong><br>
+                        • Color: ${buttonStyle.color} ${isWhite ? '✅' : '❌'}<br>
+                        • Background: ${buttonStyle.backgroundColor}<br>
+                        • Border: ${buttonStyle.border}<br>
+                        • Text Decoration: ${buttonStyle.textDecoration} ${hasNoUnderline ? '✅' : '❌'}<br>
+                        • Expected: WHITE text, NO underline<br><br>
+                    </div>
+                `;
+            });
+            
+            // Check English buttons styling
+            englishButtons.forEach((button, index) => {
+                const buttonStyle = window.getComputedStyle(button);
+                visualText += `
+                    <div class="status">
+                        <strong>English Button ${index + 1} (Learn more):</strong><br>
+                        • Color: ${buttonStyle.color}<br>
+                        • Background: ${buttonStyle.backgroundColor}<br>
+                        • Border: ${buttonStyle.border}<br>
+                        • Text Decoration: ${buttonStyle.textDecoration}<br>
+                        • Expected: Default blue styling<br><br>
+                    </div>
+                `;
+            });
+            
+            visualText += `
+                <div class="success">
+                    <strong>✅ Chinese buttons should be WHITE with NO underlines!</strong><br>
+                    <strong>✅ English buttons should be BLUE with default styling!</strong>
+                </div>
+            `;
+            
+            visualResults.innerHTML = visualText;
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const chineseButtons = document.querySelectorAll('a[data-translate="true"]');
+            const englishButtons = document.querySelectorAll('a:not([data-translate="true"])');
+            const testResults = document.getElementById('testResults');
+            
+            let clickCount = 0;
+            
+            // Click event listeners for all buttons
+            [...chineseButtons, ...englishButtons].forEach(button => {
+                button.addEventListener('click', function(e) {
+                    clickCount++;
+                    const buttonType = this.hasAttribute('data-translate') ? 'Chinese (了解更多)' : 'English (Learn more)';
+                    testResults.innerHTML = `
+                        <div class="success">
+                            <strong>✅ ${buttonType} Button Clicked Successfully!</strong><br>
+                            Click #${clickCount}<br>
+                            Text: ${this.textContent}<br>
+                            Href: ${this.href}<br>
+                            <strong>Result:</strong> Should navigate to ${this.href}
+                        </div>
+                    `;
+                });
+            });
+            
+            // Initial visual verification
+            setTimeout(visualVerification, 100);
+        });
+    </script>
+</body>
+</html>

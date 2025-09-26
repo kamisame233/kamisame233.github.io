@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Preservation Test - Hainan Jiangshuo Industrial Co., Ltd.</title>
+    <link rel="stylesheet" type="text/css" href="language-styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .navigation-links {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .navigation-links a {
+            color: #007acc;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            margin: 0 10px;
+        }
+        .navigation-links a:hover {
+            color: #0056b3;
+        }
+        .status {
+            background: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #2d5a2d;
+        }
+        .instructions {
+            background: #fff3cd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        .language-picker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .current-language {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: black;
+        }
+        .current-language-name {
+            margin-left: 8px;
+        }
+        .language-picker-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 150px;
+            display: none;
+        }
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .language-option:hover {
+            background-color: #f5f5f5;
+        }
+        .language-option .flag {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        .language-option .name {
+            font-size: 14px;
+            color: #333;
+        }
+        .debug-info {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #6c757d;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Picker -->
+    <div class="language-picker">
+        <div class="current-language" id="language-picker-trigger">
+            <span class="icon">🌐</span>
+            <span class="current-language-name">English</span>
+            <span style="margin-left: 8px;">▼</span>
+        </div>
+        <div class="language-picker-content" id="language-picker-menu">
+            <div class="language-option" data-lang="en">
+                <span class="flag">🇬🇧</span>
+                <span class="name">English</span>
+            </div>
+            <div class="language-option" data-lang="zh">
+                <span class="flag">🇨🇳</span>
+                <span class="name">中文</span>
+            </div>
+        </div>
+    </div>
+
+    <h1>Link Preservation Test</h1>
+    <p>This page tests whether navigation links preserve their href attributes when switching between languages.</p>
+
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <p>1. Click on the "About" and "Contact" links below to verify they work in English</p>
+        <p>2. Switch to Chinese using the language picker</p>
+        <p>3. Click on the translated links to verify they still work</p>
+        <p>4. Switch back to English and verify the links still work</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Navigation Links Test</h2>
+        <div class="navigation-links">
+            <p style="text-align:center;white-space:pre-wrap;">
+                <a href="about.html" target="_blank" data-translate="true" style="color: #007acc; text-decoration: underline; cursor: pointer; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">About</a>    
+                <a href="contact.html" target="_blank" data-translate="true" style="color: #007acc; text-decoration: underline; cursor: pointer; transition: color 0.3s ease;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007acc'">Contact</a>
+            </p>
+        </div>
+        
+        <div class="status">
+            <strong>Expected Behavior:</strong>
+            <ul>
+                <li>✅ Links should work in English: About → about.html, Contact → contact.html</li>
+                <li>✅ Links should work in Chinese: 关于我们 → about.html, 联系我们 → contact.html</li>
+                <li>✅ Links should preserve href attributes when switching languages</li>
+                <li>✅ Links should preserve styling and hover effects</li>
+                <li>✅ Links should open in new tabs (target="_blank")</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Debug Information</h2>
+        <div class="debug-info" id="debug-info">
+            <div>Current Language: <span id="current-lang">English</span></div>
+            <div>About Link href: <span id="about-href">about.html</span></div>
+            <div>Contact Link href: <span id="contact-href">contact.html</span></div>
+            <div>About Link text: <span id="about-text">About</span></div>
+            <div>Contact Link text: <span id="contact-text">Contact</span></div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script>
+        // Language picker functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('language-picker-trigger');
+            const menu = document.getElementById('language-picker-menu');
+            const options = document.querySelectorAll('.language-option');
+            
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            options.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const lang = this.dataset.lang;
+                    
+                    if (window.languageManager) {
+                        console.log('Switching to language:', lang);
+                        window.languageManager.switchLanguage(lang);
+                        updateDebugInfo();
+                    } else {
+                        console.error('Language manager not initialized');
+                    }
+                    
+                    menu.style.display = 'none';
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+            
+            // Update debug info
+            function updateDebugInfo() {
+                const aboutLink = document.querySelector('a[href="about.html"]');
+                const contactLink = document.querySelector('a[href="contact.html"]');
+                const currentLang = window.languageManager ? window.languageManager.currentLanguage : 'en';
+                
+                document.getElementById('current-lang').textContent = currentLang === 'en' ? 'English' : '中文';
+                document.getElementById('about-href').textContent = aboutLink ? aboutLink.getAttribute('href') : 'Not found';
+                document.getElementById('contact-href').textContent = contactLink ? contactLink.getAttribute('href') : 'Not found';
+                document.getElementById('about-text').textContent = aboutLink ? aboutLink.textContent.trim() : 'Not found';
+                document.getElementById('contact-text').textContent = contactLink ? contactLink.textContent.trim() : 'Not found';
+            }
+            
+            // Initial debug info update
+            updateDebugInfo();
+            
+            // Update debug info when language changes
+            setInterval(updateDebugInfo, 1000);
+        });
+    </script>
+</body>
+</html>

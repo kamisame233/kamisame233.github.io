@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Debug - Hainan Jiangshuo Industrial Co., Ltd.</title>
+    <link rel="stylesheet" type="text/css" href="language-styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .debug-info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .language-picker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .current-language {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .current-language-name {
+            margin-left: 8px;
+        }
+        .language-picker-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 150px;
+            display: none;
+        }
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .language-option:hover {
+            background-color: #f5f5f5;
+        }
+        .language-option .flag {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        .language-option .name {
+            font-size: 14px;
+            color: #333;
+        }
+        .language-option.current {
+            background-color: #e3f2fd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Picker -->
+    <div class="language-picker">
+        <div class="current-language" id="language-picker-trigger">
+            <span class="icon">🌐</span>
+            <span class="current-language-name">English</span>
+            <span style="margin-left: 8px;">▼</span>
+        </div>
+        <div class="language-picker-content" id="language-picker-menu">
+            <div class="language-option" data-lang="en">
+                <span class="flag">🇬🇧</span>
+                <span class="name">English</span>
+            </div>
+            <div class="language-option" data-lang="zh">
+                <span class="flag">🇨🇳</span>
+                <span class="name">中文</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="debug-info" id="debug-info">
+        <strong>Debug Info:</strong><br>
+        Current Language: <span id="current-lang">en</span><br>
+        Stored Language: <span id="stored-lang">en</span><br>
+        Language Manager: <span id="manager-status">Not initialized</span><br>
+        Last Action: <span id="last-action">None</span>
+    </div>
+
+    <h1>Hainan Jiangshuo Industrial Co., Ltd.</h1>
+    
+    <div class="test-section">
+        <h2>Hero Section</h2>
+        <h1 style="text-align:center;">Where global quality meets local expertise.</h1>
+        <blockquote>
+            <p>Our team handles import, logistics, and in-store retailing. From customs clearance to retail shelves, we provide full-service solutions to help global brands succeed in Hainan's Free Trade Port.</p>
+        </blockquote>
+        <button>Learn more</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Navigation</h2>
+        <nav>
+            <a href="#">Services</a> |
+            <a href="#">About</a> |
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+
+    <div class="test-section">
+        <h2>Company Description</h2>
+        <p>Hainan Jiangshuo Industrial Co., Ltd. is a trade and distribution company based in the Hainan Free Trade Port, China. We help international brands enter the Chinese market by managing import logistics, customs clearance, and in-store retail operations.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Services</h2>
+        <h3>Services we offer</h3>
+        <ul>
+            <li>Import Logistics Management</li>
+            <li>Customs Clearance Services</li>
+            <li>In-Store Retail Operations</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Contact Form</h2>
+        <form>
+            <div>
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name">
+            </div>
+            <div>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Email Address">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="translations.js"></script>
+    <script>
+        // Debug implementation
+        function updateDebugInfo() {
+            const currentLang = document.getElementById('current-lang');
+            const storedLang = document.getElementById('stored-lang');
+            const managerStatus = document.getElementById('manager-status');
+            
+            if (window.languageManager) {
+                currentLang.textContent = window.languageManager.currentLanguage;
+                storedLang.textContent = localStorage.getItem('website-language') || 'en';
+                managerStatus.textContent = 'Initialized';
+            } else {
+                managerStatus.textContent = 'Not initialized';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('language-picker-trigger');
+            const menu = document.getElementById('language-picker-menu');
+            const options = document.querySelectorAll('.language-option');
+            const lastAction = document.getElementById('last-action');
+            
+            // Update debug info every second
+            setInterval(updateDebugInfo, 1000);
+            
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                lastAction.textContent = 'Toggle menu clicked';
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                updateDebugInfo();
+            });
+            
+            options.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const lang = this.dataset.lang;
+                    lastAction.textContent = `Language option ${lang} clicked`;
+                    
+                    if (window.languageManager) {
+                        console.log('Switching to language:', lang);
+                        window.languageManager.switchLanguage(lang);
+                    } else {
+                        console.error('Language manager not initialized');
+                        lastAction.textContent = 'ERROR: Language manager not initialized';
+                    }
+                    
+                    menu.style.display = 'none';
+                    updateDebugInfo();
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+            
+            // Initial debug update
+            updateDebugInfo();
+        });
+    </script>
+</body>
+</html>

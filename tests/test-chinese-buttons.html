@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese Button Test - 了解更多</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #333;
+            color: white;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            background: #444;
+        }
+        .test-section h2 {
+            color: white;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .status {
+            background: #2d5a2d;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #e8f5e8;
+        }
+        .error {
+            background: #cc0000;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #ffe6e6;
+        }
+        .success {
+            background: #2d5a2d;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #e8f5e8;
+            border-left: 4px solid #28a745;
+        }
+        .instructions {
+            background: #664d00;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            color: #fff3cd;
+        }
+        .button-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #555;
+            border-radius: 5px;
+        }
+    </style>
+    
+    <!-- Include the same CSS from language-styles.css -->
+    <style>
+        /* Chinese language button styling - make "了解更多" buttons white */
+        body[lang="zh-CN"] .sqs-block-button-element--primary {
+          color: white !important;
+          background-color: transparent !important;
+          border: 1px solid white !important;
+        }
+
+        body[lang="zh-CN"] .sqs-block-button-element--primary:hover {
+          color: #ccc !important;
+          background-color: rgba(255, 255, 255, 0.1) !important;
+          border-color: #ccc !important;
+        }
+    </style>
+</head>
+<body lang="zh-CN">
+    <h1>Chinese Button Test - 了解更多</h1>
+    
+    <div class="instructions">
+        <h3>🎯 Test Instructions:</h3>
+        <p>This test verifies that the Chinese "了解更多" (Learn more) buttons are white instead of blue.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Chinese "了解更多" Buttons</h2>
+        <div class="button-container">
+            <a href="about.html" class="sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element" data-sqsp-button data-translate="true">
+                了解更多
+            </a>
+        </div>
+        
+        <div class="button-container">
+            <a href="services-content.html" class="sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element" data-sqsp-button data-translate="true">
+                了解更多
+            </a>
+        </div>
+        
+        <div class="status">
+            <strong>Expected:</strong> White text with white border, transparent background
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>English "Learn more" Buttons (for comparison)</h2>
+        <div class="button-container">
+            <a href="about.html" class="sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element" data-sqsp-button>
+                Learn more
+            </a>
+        </div>
+        
+        <div class="button-container">
+            <a href="services-content.html" class="sqs-block-button-element--medium sqs-button-element--primary sqs-block-button-element" data-sqsp-button>
+                Learn more
+            </a>
+        </div>
+        
+        <div class="status">
+            <strong>Expected:</strong> Default blue styling (for comparison)
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Visual Verification</h2>
+        <div id="visualResults">
+            <p>Loading visual verification...</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="testResults">
+            <p>Click the buttons above to see test results...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chineseButtons = document.querySelectorAll('a[data-translate="true"]');
+            const englishButtons = document.querySelectorAll('a:not([data-translate="true"])');
+            const visualResults = document.getElementById('visualResults');
+            const testResults = document.getElementById('testResults');
+            
+            let clickCount = 0;
+            
+            // Click event listeners for all buttons
+            [...chineseButtons, ...englishButtons].forEach(button => {
+                button.addEventListener('click', function(e) {
+                    clickCount++;
+                    const buttonType = this.hasAttribute('data-translate') ? 'Chinese (了解更多)' : 'English (Learn more)';
+                    testResults.innerHTML = `
+                        <div class="success">
+                            <strong>✅ ${buttonType} Button Clicked Successfully!</strong><br>
+                            Click #${clickCount}<br>
+                            Text: ${this.textContent}<br>
+                            Href: ${this.href}<br>
+                            <strong>Result:</strong> Should navigate to ${this.href}
+                        </div>
+                    `;
+                });
+            });
+            
+            // Visual verification
+            setTimeout(() => {
+                let visualText = '';
+                
+                // Check Chinese buttons styling
+                chineseButtons.forEach((button, index) => {
+                    const buttonStyle = window.getComputedStyle(button);
+                    visualText += `
+                        <div class="status">
+                            <strong>Chinese Button ${index + 1} (了解更多):</strong><br>
+                            • Color: ${buttonStyle.color}<br>
+                            • Background: ${buttonStyle.backgroundColor}<br>
+                            • Border: ${buttonStyle.border}<br>
+                            • Expected: White text, transparent background, white border ✅<br><br>
+                        </div>
+                    `;
+                });
+                
+                // Check English buttons styling
+                englishButtons.forEach((button, index) => {
+                    const buttonStyle = window.getComputedStyle(button);
+                    visualText += `
+                        <div class="status">
+                            <strong>English Button ${index + 1} (Learn more):</strong><br>
+                            • Color: ${buttonStyle.color}<br>
+                            • Background: ${buttonStyle.backgroundColor}<br>
+                            • Border: ${buttonStyle.border}<br>
+                            • Expected: Default blue styling ✅<br><br>
+                        </div>
+                    `;
+                });
+                
+                visualText += `
+                    <div class="success">
+                        <strong>✅ Chinese buttons should be white, English buttons should be blue!</strong>
+                    </div>
+                `;
+                
+                visualResults.innerHTML = visualText;
+            }, 100);
+        });
+    </script>
+</body>
+</html>

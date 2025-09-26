@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Translation Test - Hainan Jiangshuo Industrial Co., Ltd.</title>
+    <link rel="stylesheet" type="text/css" href="language-styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .text-sample {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #007acc;
+        }
+        .language-picker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .current-language {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: black;
+        }
+        .current-language-name {
+            margin-left: 8px;
+        }
+        .language-picker-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 150px;
+            display: none;
+        }
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .language-option:hover {
+            background-color: #f5f5f5;
+        }
+        .language-option .flag {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        .language-option .name {
+            font-size: 14px;
+            color: #333;
+        }
+        .expected-translation {
+            background: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-style: italic;
+            color: #2d5a2d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Picker -->
+    <div class="language-picker">
+        <div class="current-language" id="language-picker-trigger">
+            <span class="icon">🌐</span>
+            <span class="current-language-name">English</span>
+            <span style="margin-left: 8px;">▼</span>
+        </div>
+        <div class="language-picker-content" id="language-picker-menu">
+            <div class="language-option" data-lang="en">
+                <span class="flag">🇬🇧</span>
+                <span class="name">English</span>
+            </div>
+            <div class="language-option" data-lang="zh">
+                <span class="flag">🇨🇳</span>
+                <span class="name">中文</span>
+            </div>
+        </div>
+    </div>
+
+    <h1>Complete Translation Test</h1>
+    <p>This page tests all the translations that were missing from the main page. Switch between English and Chinese to verify all text translates correctly.</p>
+
+    <!-- Hero Section Test -->
+    <div class="test-section">
+        <h2>Hero Section</h2>
+        <div class="text-sample">
+            <h1 data-translate="true">Where global quality meets local expertise.</h1>
+            <div class="expected-translation">Expected: 全球品质与本地专业知识的完美结合。</div>
+        </div>
+        <div class="text-sample">
+            <p data-translate="true">Our team handles import, logistics, and in-store retailing. From customs clearance to retail shelves, we provide full-service solutions to help global brands succeed in Hainan's Free Trade Port.</p>
+            <div class="expected-translation">Expected: 我们的团队处理进口、物流和店内零售业务。从清关到零售货架，我们提供全方位服务解决方案，帮助全球品牌在海南自由贸易港取得成功。</div>
+        </div>
+        <div class="text-sample">
+            <button data-translate="true">Learn more</button>
+            <div class="expected-translation">Expected: 了解更多</div>
+        </div>
+    </div>
+
+    <!-- Services Section Test -->
+    <div class="test-section">
+        <h2>Services Section</h2>
+        <div class="text-sample">
+            <h1 data-translate="true">Services we offer</h1>
+            <div class="expected-translation">Expected: 我们提供的服务</div>
+        </div>
+        <div class="text-sample">
+            <p data-translate="true">We offer end-to-end solutions for international brands looking to enter the Chinese market via Hainan Free Trade Port.</p>
+            <div class="expected-translation">Expected: 我们为希望通过海南自由贸易港进入中国市场的国际品牌提供端到端解决方案。</div>
+        </div>
+        <div class="text-sample">
+            <p data-translate="true">We assist with smooth and compliant import procedures, including bonded warehouse options and zero-tariff entry under Hainan Free Trade Port policies.</p>
+            <div class="expected-translation">Expected: 我们协助顺利合规的进口程序，包括保税仓库选项和海南自由贸易港政策下的零关税入境。</div>
+        </div>
+    </div>
+
+    <!-- Company Mission Test -->
+    <div class="test-section">
+        <h2>Company Mission</h2>
+        <div class="text-sample">
+            <p data-translate="true">At Hainan Jiangshuo Industrial Co., Ltd., we believe in bridging global quality with local opportunity. As a company rooted in the fast-growing Hainan Free Trade Port, we are committed to creating long-term, trustworthy partnerships between international brands and Chinese consumers.</p>
+            <div class="expected-translation">Expected: 在海南江硕实业有限公司，我们相信架起全球品质与本地机遇的桥梁。作为一家扎根于快速发展的海南自由贸易港的公司，我们致力于在国际品牌和中国消费者之间建立长期、可信的合作伙伴关系。</div>
+        </div>
+    </div>
+
+    <!-- Navigation Test -->
+    <div class="test-section">
+        <h2>Navigation</h2>
+        <div class="text-sample">
+            <nav>
+                <a href="#" data-translate="true">Services</a> |
+                <a href="#" data-translate="true">About</a> |
+                <a href="#" data-translate="true">Contact</a> |
+                <a href="#" data-translate="true">Cart</a>
+            </nav>
+            <div class="expected-translation">Expected: 服务 | 关于我们 | 联系我们 | 购物车</div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script>
+        // Test page specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const trigger = document.getElementById('language-picker-trigger');
+            const menu = document.getElementById('language-picker-menu');
+            const options = document.querySelectorAll('.language-option');
+            
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            });
+            
+            options.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const lang = this.dataset.lang;
+                    
+                    if (window.languageManager) {
+                        console.log('Switching to language:', lang);
+                        window.languageManager.switchLanguage(lang);
+                    } else {
+                        console.error('Language manager not initialized');
+                    }
+                    
+                    menu.style.display = 'none';
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Colors Test - Index vs Other Pages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 10px;
+        }
+        .status {
+            background: #e8f5e8;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #2d5a2d;
+        }
+        .error {
+            background: #ffe6e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            color: #cc0000;
+        }
+        .success {
+            background: #e8f5e8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #2d5a2d;
+            border-left: 4px solid #28a745;
+        }
+        .instructions {
+            background: #fff3cd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        .header-nav {
+            background: #333;
+            color: white;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .header-nav a:hover {
+            color: #ccc;
+        }
+        .white-background {
+            background: white;
+            color: black;
+        }
+        .white-background .header-nav {
+            background: white;
+            color: black;
+            border: 1px solid #ddd;
+        }
+        .white-background .header-nav a {
+            color: black;
+        }
+        .white-background .header-nav a:hover {
+            color: #333;
+        }
+    </style>
+    
+    <!-- Include the same CSS from language-styles.css -->
+    <style>
+        /* Top navigation links styling - ensure proper colors for different page backgrounds */
+        /* Default styling for all pages */
+        .header-nav a[href="about.html"],
+        .header-nav a[href="contact.html"],
+        .header-menu-nav-item a[href="about.html"],
+        .header-menu-nav-item a[href="contact.html"] {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+
+        .header-nav a[href="about.html"]:hover,
+        .header-nav a[href="contact.html"]:hover,
+        .header-menu-nav-item a[href="about.html"]:hover,
+        .header-menu-nav-item a[href="contact.html"]:hover {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+
+        /* INDEX PAGE SPECIFIC: Make top navigation links white on dark background */
+        .index-page .header-nav a[href="about.html"],
+        .index-page .header-nav a[href="contact.html"],
+        .index-page .header-menu-nav-item a[href="about.html"],
+        .index-page .header-menu-nav-item a[href="contact.html"] {
+          color: white !important;
+          text-decoration: none !important;
+        }
+
+        .index-page .header-nav a[href="about.html"]:hover,
+        .index-page .header-nav a[href="contact.html"]:hover,
+        .index-page .header-menu-nav-item a[href="about.html"]:hover,
+        .index-page .header-menu-nav-item a[href="contact.html"]:hover {
+          color: #ccc !important;
+          text-decoration: none !important;
+        }
+
+        /* OTHER PAGES: Ensure top navigation links remain black on white background */
+        body:not(.index-page) .header-nav a[href="about.html"],
+        body:not(.index-page) .header-nav a[href="contact.html"],
+        body:not(.index-page) .header-menu-nav-item a[href="about.html"],
+        body:not(.index-page) .header-menu-nav-item a[href="contact.html"] {
+          color: black !important;
+          text-decoration: none !important;
+        }
+
+        body:not(.index-page) .header-nav a[href="about.html"]:hover,
+        body:not(.index-page) .header-nav a[href="contact.html"]:hover,
+        body:not(.index-page) .header-menu-nav-item a[href="about.html"]:hover,
+        body:not(.index-page) .header-menu-nav-item a[href="contact.html"]:hover {
+          color: #333 !important;
+          text-decoration: none !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Navigation Colors Test - Index vs Other Pages</h1>
+    
+    <div class="instructions">
+        <h3>🎯 Test Instructions:</h3>
+        <p>This test verifies that:</p>
+        <ul>
+            <li><strong>INDEX PAGE</strong> (dark background): Top navigation links should be WHITE</li>
+            <li><strong>OTHER PAGES</strong> (white background): Top navigation links should be BLACK</li>
+            <li>Both should be clickable and functional</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>INDEX PAGE (Dark Background) - Should Show WHITE Links</h2>
+        <div class="index-page">
+            <div class="header-nav">
+                <a href="services-content.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        
+        <div class="status">
+            <strong>Expected:</strong> White text for About and Contact links
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>OTHER PAGES (White Background) - Should Show BLACK Links</h2>
+        <div class="white-background">
+            <div class="header-nav">
+                <a href="services-content.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+        
+        <div class="status">
+            <strong>Expected:</strong> Black text for About and Contact links
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Visual Verification</h2>
+        <div id="visualResults">
+            <p>Loading visual verification...</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Results</h2>
+        <div id="testResults">
+            <p>Click the links above to see test results...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const indexAboutLink = document.querySelector('.index-page .header-nav a[href="about.html"]');
+            const indexContactLink = document.querySelector('.index-page .header-nav a[href="contact.html"]');
+            const otherAboutLink = document.querySelector('.white-background .header-nav a[href="about.html"]');
+            const otherContactLink = document.querySelector('.white-background .header-nav a[href="contact.html"]');
+            const visualResults = document.getElementById('visualResults');
+            const testResults = document.getElementById('testResults');
+            
+            let clickCount = 0;
+            
+            // Click event listeners for all links
+            [indexAboutLink, indexContactLink, otherAboutLink, otherContactLink].forEach(link => {
+                if (link) {
+                    link.addEventListener('click', function(e) {
+                        clickCount++;
+                        const pageType = this.closest('.index-page') ? 'INDEX PAGE' : 'OTHER PAGE';
+                        testResults.innerHTML = `
+                            <div class="success">
+                                <strong>✅ ${pageType} Link Clicked Successfully!</strong><br>
+                                Click #${clickCount}<br>
+                                Link: ${this.textContent}<br>
+                                Href: ${this.href}<br>
+                                <strong>Result:</strong> Should navigate to ${this.href}
+                            </div>
+                        `;
+                    });
+                }
+            });
+            
+            // Visual verification
+            setTimeout(() => {
+                let visualText = '';
+                
+                // Check index page styling
+                if (indexAboutLink && indexContactLink) {
+                    const indexAboutStyle = window.getComputedStyle(indexAboutLink);
+                    const indexContactStyle = window.getComputedStyle(indexContactLink);
+                    
+                    visualText += `
+                        <div class="status">
+                            <strong>INDEX PAGE (Dark Background):</strong><br>
+                            • About color: ${indexAboutStyle.color}<br>
+                            • Contact color: ${indexContactStyle.color}<br>
+                            • Expected: White text ✅<br><br>
+                        </div>
+                    `;
+                }
+                
+                // Check other pages styling
+                if (otherAboutLink && otherContactLink) {
+                    const otherAboutStyle = window.getComputedStyle(otherAboutLink);
+                    const otherContactStyle = window.getComputedStyle(otherContactLink);
+                    
+                    visualText += `
+                        <div class="status">
+                            <strong>OTHER PAGES (White Background):</strong><br>
+                            • About color: ${otherAboutStyle.color}<br>
+                            • Contact color: ${otherContactStyle.color}<br>
+                            • Expected: Black text ✅<br><br>
+                        </div>
+                    `;
+                }
+                
+                visualText += `
+                    <div class="success">
+                        <strong>✅ Navigation links should have correct colors for each page type!</strong>
+                    </div>
+                `;
+                
+                visualResults.innerHTML = visualText;
+            }, 100);
+        });
+    </script>
+</body>
+</html>
